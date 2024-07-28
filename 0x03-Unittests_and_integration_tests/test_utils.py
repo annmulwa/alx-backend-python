@@ -31,6 +31,6 @@ class TestAccessNestedMap(TestCase):
         """
         Test that a KeyError is raised
         """
-        self.assertRaises(KeyError) as e:
+        with self.assertRaises(KeyError) as e:
             access_nested_map(map, path)
             self.assertEqual(wrong_output, e.exception)
