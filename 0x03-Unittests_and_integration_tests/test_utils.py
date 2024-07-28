@@ -38,20 +38,22 @@ class TestAccessNestedMap(TestCase):
 
 
 class TestGetJson(TestCase):
-    """ Class for testing get_json function """
-    # order of args: test_url, test_payload
+    """
+    Class for testing get_json function
+    """
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
     def test_get_json(self, test_url, test_payload):
-        """ Test method returns correct output """
-        # set mock response to have return value of test payload
+        """
+        Test that utils.get_json returns the expected result
+        """
         mock_response = Mock()
         mock_response.json.return_value = test_payload
-        # function calls requests.get, need patch to get mock return value
+
         with patch('requests.get', return_value=mock_response):
             real_response = get_json(test_url)
             self.assertEqual(real_response, test_payload)
-            # check that mocked method called once per input
+
             mock_response.json.assert_called_once()
