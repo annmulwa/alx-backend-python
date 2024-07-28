@@ -84,7 +84,7 @@ class TestMemoize(TestCase):
                 """
                 return self.a_method()
 
-        with patch.abject(TestClass, 'a_method', return_value=42) as patched:
+        with patch.object(TestClass, 'a_method', return_value=42) as patched:
             test_class = TestClass()
             real_return = test_class.a_property
             real_return = test_class.a_property
