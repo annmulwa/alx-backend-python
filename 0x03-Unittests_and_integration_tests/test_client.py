@@ -84,7 +84,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        """ 
+        """
         Prepare for testing
         """
         org = TEST_PAYLOAD[0][0]
